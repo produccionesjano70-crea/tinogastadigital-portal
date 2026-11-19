@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BingosAr | Canales oficiales</title>
+<meta name="description" content="Seguí nuestros canales, transmisión en vivo de los sorteos, información y sorpresas.">
+<meta name="theme-color" content="#041a3d">
+<meta property="og:title" content="BingosAr | Canales oficiales">
+<meta property="og:description" content="Seguí nuestros canales, transmisión en vivo de los sorteos, información y sorpresas.">
+<meta property="og:type" content="website">
+<!-- Cuando tengas tu dominio, descomentá y poné la URL completa de la imagen:
+<meta property="og:image" content="https://TU-DOMINIO/assets/logo.png"> -->
+<link rel="icon" href="assets/logo.png">
+
+<style>
+/* =====================================================================
+   PERSONALIZACIÓN — tocá solo estas variables
+   ===================================================================== */
+:root{
+  /* Fondo */
+  --bg-image: url("assets/fondo.jpg");   /* tu imagen de fondo (poné el archivo en /assets) */
+  --bg-color-1: #041a3d;                 /* degradé de respaldo si no hay imagen: azul noche */
+  --bg-color-2: #0b5cad;                 /* azul medio */
+  --bg-color-3: #5ec8f2;                 /* celeste */
+  --overlay: 0.35;                       /* oscurecer el fondo: 0 (nada) a 1 (negro) */
+  --bg-blur: 0px;                        /* desenfoque del fondo, ej: 4px */
+
+  /* Botones (transparencia = vidrio) */
+  --btn-bg: rgba(214,238,255,.16);       /* el último número es la transparencia */
+  --btn-bg-hover: rgba(214,238,255,.30);
+  --btn-border: rgba(190,228,255,.45);
+  --btn-blur: 14px;
+  --btn-radius: 18px;
+
+  /* Texto */
+  --text: #f1f8ff;                       /* blanco azulado, no puro */
+  --text-soft: rgba(226,242,255,.85);
+  --accent: #8fe3ff;                     /* celeste brillante para resaltar */
+
+  /* Tamaños */
+  --card-width: 520px;
+}
+
+/* ===================================================================== */
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{height:100%}
+body{
+  min-height:100%;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color:var(--text);
+  display:flex;justify-content:center;align-items:flex-start;
+  padding:max(28px,env(safe-area-inset-top)) 18px max(28px,env(safe-area-inset-bottom));
+  background:linear-gradient(135deg,var(--bg-color-1),var(--bg-color-2) 55%,var(--bg-color-3));
+  background-attachment:fixed;
+  overflow-x:hidden;
+}
+/* capa de fondo fija (imagen) */
+.bg{
+  position:fixed;inset:0;z-index:-2;
+  background:var(--bg-image) center/cover no-repeat;
+  filter:blur(var(--bg-blur));
+  transform:scale(1.05); /* evita bordes con blur */
+}
+.bg::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,var(--overlay))}
+
+.card{
+  width:100%;max-width:var(--card-width);
+  display:flex;flex-direction:column;align-items:center;
+  text-align:center;
+  animation:fadeUp .7s ease both;
+}
+.avatar{
+  width:112px;height:112px;border-radius:50%;
+  object-fit:cover;
+  border:3px solid rgba(190,228,255,.8);
+  box-shadow:0 8px 30px rgba(2,20,50,.55),0 0 0 6px rgba(143,227,255,.18);
+  background:rgba(255,255,255,.15);
+}
+h1{margin-top:16px;font-size:clamp(1.7rem,5.5vw,2.2rem);letter-spacing:.5px;text-shadow:0 2px 12px rgba(0,0,0,.45)}
+h1 span{color:var(--accent)}
+.bio{margin-top:8px;max-width:420px;color:var(--text-soft);line-height:1.45;font-size:1rem;text-shadow:0 1px 8px rgba(0,0,0,.4)}
+
+.links{margin-top:26px;width:100%;display:flex;flex-direction:column;gap:14px}
+.btn{
+  display:flex;align-items:center;gap:14px;
+  width:100%;padding:15px 18px;
+  color:var(--text);text-decoration:none;font-weight:600;font-size:1.05rem;
+  background:var(--btn-bg);
+  border:1px solid var(--btn-border);
+  border-radius:var(--btn-radius);
+  -webkit-backdrop-filter:blur(var(--btn-blur));backdrop-filter:blur(var(--btn-blur));
+  box-shadow:0 6px 20px rgba(0,0,0,.22);
+  transition:transform .18s ease,background .18s ease,box-shadow .18s ease;
+  opacity:0;animation:fadeUp .6s ease forwards;
+}
+.btn:nth-child(1){animation-delay:.15s}
+.btn:nth-child(2){animation-delay:.25s}
+.btn:nth-child(3){animation-delay:.35s}
+.btn:nth-child(4){animation-delay:.45s}
+.btn:nth-child(5){animation-delay:.55s}
+.btn:nth-child(6){animation-delay:.65s}
+.btn:hover,.btn:focus-visible{background:var(--btn-bg-hover);transform:translateY(-3px) scale(1.015);box-shadow:0 12px 28px rgba(0,0,0,.32);outline:none}
+.btn:active{transform:scale(.98)}
+.ico{
+  flex:0 0 42px;height:42px;border-radius:12px;
+  display:grid;place-items:center;
+  background:rgba(255,255,255,.18);
+}
+.ico svg{width:24px;height:24px;fill:#fff}
+.btn .label{flex:1;text-align:left}
+.btn .sub{display:block;font-weight:400;font-size:.8rem;color:var(--text-soft);margin-top:2px}
+.arrow{opacity:.7;font-size:1.2rem}
+
+/* colores de marca en el icono */
+/* iconos unificados en la paleta azul (si querés los colores originales de cada red:
+   YouTube #ff0000, WhatsApp #25d366, Facebook #1877f2, cambiá los fondos acá) */
+.yt .ico{background:linear-gradient(135deg,#1e7fd6,#0a4a9c)}
+.wa .ico{background:linear-gradient(135deg,#4fc3f7,#1e88d6)}
+.fb .ico{background:linear-gradient(135deg,#2f6fe0,#123a8f)}
+.radio .ico{background:linear-gradient(135deg,#7ee0ff,#2aa3e6)}
+
+footer{margin-top:30px;font-size:.78rem;color:var(--text-soft);opacity:.85;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;opacity:1!important;transition:none!important}}
+
+/* PC: un poco más aire */
+@media (min-width:768px){
+  body{align-items:center;padding-top:40px;padding-bottom:40px}
+  .avatar{width:132px;height:132px}
+  .btn{padding:17px 22px}
+}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div>
+
+<main class="card">
+  <img class="avatar" src="assets/logo.png" alt="Logo BingosAr"
+       onerror="this.onerror=null;this.src='https://ugc.production.linktr.ee/d740f393-cdff-47df-8e1f-c565071097b5_file-00000000b56c61f8b7c960fe3482203b.png?io=true&size=avatar-v3_0'">
+  <h1>Bingos<span>Ar</span></h1>
+  <p class="bio">✨ Seguí nuestros canales, transmisión en vivo de los sorteos, información y sorpresas. 🎉</p>
+
+  <nav class="links" aria-label="Enlaces">
+    <!-- Para agregar o quitar botones, copiá/borrá un bloque <a class="btn"> completo -->
+
+    <a class="btn yt" href="https://www.youtube.com/@BINGOSAR" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1c.5-1.9.5-5.8.5-5.8s0-3.9-.5-5.8ZM9.6 15.6V8.4l6.2 3.6-6.2 3.6Z"/></svg></span>
+      <span class="label">YouTube<span class="sub">Nuestro canal oficial de @BingosAr</span></span>
+      <span class="arrow">›</span>
+    </a>
+
+    <a class="btn radio" href="https://radio.tinogastadigital.com.ar/" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M3.2 7.5 18.6 1.3l.8 2L8.6 7.5H20a2 2 0 0 1 2 2V19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.5a2 2 0 0 1 1.2-2ZM8 18a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm8-6v1.5h3V12h-3Zm0 3v1.5h3V15h-3Z"/></svg></span>
+      <span class="label">Radio Tinogasta Digital<span class="sub">Escuchá en vivo</span></span>
+      <span class="arrow">›</span>
+    </a>
+
+    <a class="btn wa" href="https://whatsapp.com/channel/0029Vb5Lzac3GJOpySNqs81K" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 0a12 12 0 0 0-10.3 18L0 24l6.2-1.6A12 12 0 1 0 12 0Zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8Zm5.4-7.3c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1a8 8 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.700 3.700 0 0 0-1.100 2.700c0 1.600 1.100 3.200 1.300 3.400.2.200 2.300 3.500 5.600 4.900 2 .8 2.800.9 3.800.7.600-.1 1.800-.7 2-1.400.3-.7.3-1.300.2-1.400-.1-.1-.3-.2-.6-.3Z"/></svg></span>
+      <span class="label">Canal de WhatsApp<span class="sub">Novedades y sorpresas</span></span>
+      <span class="arrow">›</span>
+    </a>
+
+    <a class="btn fb" href="https://www.facebook.com/joselucas.orquera" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M24 12a12 12 0 1 0-13.900 11.900v-8.400H7.100V12h3V9.400c0-3 1.800-4.700 4.500-4.700 1.300 0 2.700.2 2.700.2v3h-1.500c-1.500 0-2 .9-2 1.900V12h3.400l-.5 3.500h-2.900v8.400A12 12 0 0 0 24 12Z"/></svg></span>
+      <span class="label">Facebook<span class="sub">José Lucas "Jano" Orquera</span></span>
+      <span class="arrow">›</span>
+    </a>
+  </nav>
+
+  <footer>© <span id="y"></span> BingosAr · Tinogasta, Catamarca</footer>
+</main>
+
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
